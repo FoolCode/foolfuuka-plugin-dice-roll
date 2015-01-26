@@ -18,11 +18,11 @@ class HHVM_Dice
 
                 $autoloader->addClass('Foolz\Foolfuuka\Plugins\DiceRoll\Model\Dice', __DIR__.'/classes/model/dice.php');
 
-                Event::forge('Foolz\Foolfuuka\Model\CommentInsert::insert#obj.afterInputCheck')
+                Event::forge('Foolz\FoolFuuka\Model\CommentInsert::insert#obj.afterInputCheck')
                     ->setCall('Foolz\Foolfuuka\Plugins\DiceRoll\Model\Dice::roll')
                     ->setPriority(4);
 
-                Event::forge('Foolz\Foolfuuka\Model\RadixCollection::structure#var.structure')
+                Event::forge('Foolz\FoolFuuka\Model\RadixCollection::structure#var.structure')
                     ->setCall(function($result) {
                         $structure = $result->getParam('structure');
                         $structure['plugin_dice_roll_enable'] = [
