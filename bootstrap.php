@@ -1,7 +1,7 @@
 <?php
 
-use Foolz\Foolframe\Model\Autoloader;
-use Foolz\Foolframe\Model\Context;
+use Foolz\FoolFrame\Model\Autoloader;
+use Foolz\FoolFrame\Model\Context;
 use Foolz\Plugin\Event;
 
 class HHVM_Dice
@@ -16,10 +16,10 @@ class HHVM_Dice
                 /** @var Autoloader $autoloader */
                 $autoloader = $context->getService('autoloader');
 
-                $autoloader->addClass('Foolz\Foolfuuka\Plugins\DiceRoll\Model\Dice', __DIR__.'/classes/model/dice.php');
+                $autoloader->addClass('Foolz\FoolFuuka\Plugins\DiceRoll\Model\Dice', __DIR__.'/classes/model/dice.php');
 
                 Event::forge('Foolz\FoolFuuka\Model\CommentInsert::insert#obj.afterInputCheck')
-                    ->setCall('Foolz\Foolfuuka\Plugins\DiceRoll\Model\Dice::roll')
+                    ->setCall('Foolz\FoolFuuka\Plugins\DiceRoll\Model\Dice::roll')
                     ->setPriority(4);
 
                 Event::forge('Foolz\FoolFuuka\Model\RadixCollection::structure#var.structure')
